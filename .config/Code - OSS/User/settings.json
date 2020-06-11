@@ -1,0 +1,154 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "typescript.check.npmIsInstalled": false,
+    "files.associations": {
+        "*.qml": "qml"
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "window.zoomLevel": 0,
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#00BCD4",
+        "list.activeSelectionForeground": "#00BCD4",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "list.highlightForeground": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#00BCD450",
+        "editorSuggestWidget.highlightForeground": "#00BCD4",
+        "textLink.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "tab.activeBorder": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4",
+        "editorWidget.resizeBorder": "#00BCD4",
+        "editorWidget.border": "#00BCD4",
+        "settings.modifiedItemIndicator": "#00BCD4",
+        "settings.headerForeground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4",
+        "editor.findMatchBorder": "#00BCD4",
+        "selection.background": "#00BCD440"
+    },
+    "git.ignoreMissingGitWarning": true,
+    "material-icon-theme.showWelcomeMessage": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.confirmDelete": false,
+    "editor.fontFamily": "'Cascadia Code PL', 'Roboto Mono Regular', Consolas, 'Courier New', monospace",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.sideBar.location": "left",
+    "editor.cursorSmoothCaretAnimation": true,
+    "terminal.integrated.rendererType": "dom",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.external.windowsExec": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+    "C_Cpp.updateChannel": "Insiders",
+
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+
+    "[vue]": {
+        "editor.formatOnSave": true
+    },
+
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+
+    "[elixir]": {
+        "editor.formatOnSave": true
+    },
+
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "sync.gist": "b49df3f17d828b2fce54ee7da1245ea7",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+    "material-icon-theme.opacity": 1,
+    "materialTheme.accent": "Cyan",
+    "go.lintFlags": [
+        "--disable=all",
+        "--enable=errcheck"
+    ],
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {},
+        "FIXME": {}
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "green",
+        "type": "none"
+    },
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "editor.fontLigatures": true,
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#b52e31"
+        },
+        {
+            "name": "Auth0 Orange",
+            "value": "#eb5424"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff"
+        },
+        {
+            "name": "C# Purple",
+            "value": "#68217A"
+        },
+        {
+            "name": "Gatsby Purple",
+            "value": "#639"
+        },
+        {
+            "name": "Go Cyan",
+            "value": "#5dc9e2"
+        },
+        {
+            "name": "Java Blue-Gray",
+            "value": "#557c9b"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a4"
+        },
+        {
+            "name": "Node Green",
+            "value": "#215732"
+        },
+        {
+            "name": "React Blue",
+            "value": "#00b3e6"
+        },
+        {
+            "name": "Something Different",
+            "value": "#832561"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b883"
+        }
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.smoothScrolling": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "workbench.colorTheme": "SynthWave '84",
+    "synthwave84.disableGlow": true,
+    "synthwave84.brightness": 0,
+    "elixirLS.dialyzerEnabled": false
+}

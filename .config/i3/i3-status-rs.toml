@@ -1,0 +1,66 @@
+icons = "awesome"
+
+[theme]
+name = "slick"
+[theme.overrides]
+alternating_tint_bg = "#1e1e1e"
+idle_bg = "#68001d"
+# idle_bg = "#123456"
+# idle_fg = "#ffffff"
+
+[[block]]
+block = "docker"
+interval = 5
+format = "{running}/{total}"
+
+[[block]]
+block = "net"
+device = "enp0s3"
+ssid = false
+signal_strength = false
+ip = false
+speed_up = true
+speed_down = true
+interval = 5
+use_bits = true
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "uptime"
+
+# [[block]]
+# block = "pacman"
+# interval = 600
+# format = "{pacman} updates available"
+# format_singular = "{pacman} update available"
+# format_up_to_date = "system up to date"
+# critical_updates_regex = "(linux |linux-lts|linux-zen)"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
