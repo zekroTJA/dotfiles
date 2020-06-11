@@ -24,6 +24,11 @@ Mostly I use [Manjaro](https://manjaro.org) on my client machines. I like the pr
 - [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
+### Fonts
+
+- [Cascadia Code](https://github.com/microsoft/cascadia-code)
+- [Awesome Termonal Fonts](https://github.com/gabrielelana/awesome-terminal-fonts)
+
 ### Window Manager
 
 - [i3wm](https://i3wm.org)
