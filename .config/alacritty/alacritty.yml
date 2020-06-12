@@ -66,10 +66,10 @@ colors:
 
   normal:
     black:   '0x0D0D0D'
-    red:     '0xCC042F'
-    green:   '0x3AA842'
+    red:     '0xd30c8a' # '0xCC042F'
+    green:   '0xd34b0c' # '0x3AA842'
     yellow:  '0xCCA828'
-    blue:    '0x1767FF'
+    blue:    '0xd30c2d' # '0x1767FF'
     magenta: '0x713AA8'
     cyan:    '0x4ACFBC'
     white:   '0xB0B0B0'
