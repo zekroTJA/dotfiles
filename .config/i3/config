@@ -180,7 +180,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	position top
-	font pango:Cascadia Code PL, FontAwesome 10 	
+	font pango:DejaVu Sans Mono, FontAwesome 10 	
         status_command i3status-rs ~/.config/i3/i3-status-rs.toml
 	i3bar_command i3bar -t
 
@@ -201,7 +201,10 @@ title_align center
 # Composition manager.
 exec_always --no-startup-id picom -bcfn
 
+# gaps config
+for_window [class=".*"] border pixel 3
+gaps inner 5
+
 # colors
 # class                   border   background  text     indicator  child_border
-# client.focused            #141414  #141414     #d8d8d8  #d8d8d8    #141414
 client.focused            #51010e  #51010e     #d8d8d8  #d8d8d8    #51010e
