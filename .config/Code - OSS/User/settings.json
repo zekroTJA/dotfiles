@@ -74,6 +74,7 @@
     ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontFamily": "Cascadia Mono PL, FontAwesome",
     "todo-tree.highlights.customHighlight": {
         "TODO": {},
         "FIXME": {}
@@ -150,5 +151,6 @@
     "workbench.colorTheme": "SynthWave '84",
     "synthwave84.disableGlow": true,
     "synthwave84.brightness": 0,
-    "elixirLS.dialyzerEnabled": false
+    "elixirLS.dialyzerEnabled": false,
+    "window.menuBarVisibility": "toggle"
 }

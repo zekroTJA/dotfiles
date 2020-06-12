@@ -10,3 +10,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.cargo/bin:$PATH"
 
 nitrogen --restore
+
+alias ls="lsd"
+alias lt="lsd --tree"
