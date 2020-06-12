@@ -11,6 +11,8 @@ These dotfiles are from my private development environemt and also some of my Li
 
 ![](.github/media/screenshots/ss01.png)
 
+![](.github/media/screenshots/ss02.png)
+
 ## Used Software and Packages
 
 ### Distro
@@ -26,13 +28,14 @@ Mostly I use [Manjaro](https://manjaro.org) on my client machines. I like the pr
 
 ### Window Manager
 
-- [i3wm](https://i3wm.org)
+- [i3-gaps](https://github.com/Airblader/i3)
 - [picom](https://github.com/yshui/picom)
 - [dmenu](https://tools.suckless.org/dmenu)
 - [Nitrogen](https://github.com/l3ib/nitrogen)
 
 ### Etc
 
+- [lsd](https://github.com/Peltoche/lsd)
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Vim](https://www.vim.org/)
 
