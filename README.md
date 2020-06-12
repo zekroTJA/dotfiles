@@ -7,11 +7,11 @@ These dotfiles are from my private development environemt and also some of my Li
 
 ## Screenshots
 
-![](.github/media/screenshots/ss00.jpg)
+![](.github/media/screenshots/00.jpg)
 
-![](.github/media/screenshots/ss01.png)
+![](.github/media/screenshots/01.png)
 
-![](.github/media/screenshots/ss02.png)
+![](.github/media/screenshots/02.png)
 
 ## Used Software and Packages
 
