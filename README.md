@@ -44,6 +44,10 @@ Mostly I use [Manjaro](https://manjaro.org) on my client machines. I like the pr
 - [Visual Studio Code](https://github.com/Microsoft/vscode)
 - [Vim](https://www.vim.org/)
 
+### Wallpaper
+
+- [Wallpaper by Seiorai](https://www.deviantart.com/seiorai/art/Zero-Two-Human-751436549)
+
 ---
 © 2020 Ringo Hoffmann (zekro Development)  
 Covered by the MIT Licence.
