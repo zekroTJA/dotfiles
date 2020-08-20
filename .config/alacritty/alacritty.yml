@@ -87,7 +87,7 @@ colors:
 indexed_colors: []
 
 # Visual Bell configuration.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
