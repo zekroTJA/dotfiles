@@ -1,0 +1,3 @@
+endpoint = "https://starsearch.zekro.de"
+limit = 5
+display_mode = "detailed"

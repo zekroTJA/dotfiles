@@ -1,0 +1,8 @@
+[
+  {
+    "context": "workspace",
+    "bindings": {
+      "ctrl-shift-y": "terminal_panel::ToggleFocus"
+    }
+  }
+]

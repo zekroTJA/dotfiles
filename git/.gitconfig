@@ -1,0 +1,38 @@
+[user]
+	name = zekroTJA
+	email = private@zekro.de
+
+[alias]
+	lg = "log --graph --pretty='format:%C(auto) %h %d %s %C(245)[%C(81)%an%C(245)] %C(240)%ch'"
+	amend = commit --amend --no-edit
+	rm = rm --cached
+	tag = tag -a
+	siwtch = switch
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
+	stats = "!git shortlog -s | sort -nr"
+	last-release-tag = "!git tag -l --sort version:refname | grep -v '-' | tail -1"
+	since-last-release = "!git lg HEAD...$(git last-release-tag)"
+	my-changes = "!git since-last-release --author=$(git config user.email)"
+	diffc = "!f() { REF=$1; git diff $REF~1..$REF; }; f"
+	cleanup-branches = "!f() { git branch -v | grep '\\[gone\\]' | cut -f 3 -d ' ' | xargs git branch -d; }; f"
+	delete-tag = "!f() { git tag --delete $1 && git push origin --delete $1; }; f"	
+	t = "tag -l --sort=-v:refname"
+	pushf = "push --force-with-lease"
+	taga = "!f() { git tag -a $1 -m $1; }; f"
+
+[merge]
+	ff = no
+
+[pull]
+	ff = yes
+
+[push]
+	useForceIfIncludes = true
+
+[core]
+	editor = vim
+	autocrlf = input
+
+[include]
+	path = "~/.config/gitconfig.private"
+
