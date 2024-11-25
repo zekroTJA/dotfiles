@@ -1,6 +1,6 @@
 [user]
 	name = zekroTJA
-	email = private@zekro.de
+	email = contact@zekro.de
 
 [alias]
 	lg = "log --graph --pretty='format:%C(auto) %h %d %s %C(245)[%C(81)%an%C(245)] %C(240)%ch'"
@@ -25,6 +25,7 @@
 
 [pull]
 	ff = yes
+	rebase = yes
 
 [push]
 	useForceIfIncludes = true
