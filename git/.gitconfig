@@ -3,7 +3,7 @@
 	email = contact@zekro.de
 
 [alias]
-	lg = "log --graph --pretty='format:%C(auto) %h %d %s %C(245)[%C(81)%an%C(245)] %C(240)%ch'"
+	lg = "log --graph --pretty='format:%C(auto) %h %d %s %C(245)[%C(81)%an%C(245)] %C(240)%ch%C(auto)'"
 	amend = commit --amend --no-edit
 	rm = rm --cached
 	tag = tag -a
