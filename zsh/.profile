@@ -12,7 +12,7 @@ alias la="lsd -A"
 alias ll="lsd -lA"
 alias lt="lsd -lA --tree"
 alias viprofile="vim $HOME/.profile && source $HOME/.profile"
-alias dc="docker-compose"
+alias dc="docker compose"
 alias sshconfig="vim $HOME/.ssh/config"
 alias gitconfig="EDITOR=vim git config --global --edit"
 alias dev="make buildDevDelve"
@@ -39,3 +39,4 @@ if which opam >/dev/null 2>&1; then
 fi
 
 test -d "$HOME/.private" && source "$HOME/.private/profile/"* || true
+
