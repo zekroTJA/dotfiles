@@ -19,6 +19,7 @@
 	t = "tag -l --sort=-v:refname"
 	pushf = "push --force-with-lease"
 	taga = "!f() { git tag -a $1 -m $1; }; f"
+	replace-tag = "!f() { git tag --delete $1 && git push origin --delete $1 && git tag $1 && git push origin $1; }; f"
 
 [merge]
 	ff = no
