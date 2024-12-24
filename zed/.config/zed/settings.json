@@ -24,5 +24,10 @@
   "inlay_hints": {
     "enabled": true
   },
-  "format_on_save": "on"
+  "format_on_save": "on",
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "editor_width"
+    }
+  }
 }
