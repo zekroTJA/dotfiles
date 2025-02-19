@@ -142,3 +142,12 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # add Pulumi to the PATH
 export PATH=$PATH:/home/r.hoffmann@intern.b12-group.de/.pulumi/bin
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/rhoffmann/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

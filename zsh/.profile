@@ -23,8 +23,6 @@ alias cat="bat"
 alias track="tracker add"
 alias lg="lazygit"
 
-alias snippets="code ~/dev/snippets"
-
 silent_background() {
     { 2>&3 "$@"& } 3>&2 2>/dev/null
     disown &>/dev/null  # Prevent whine if job has already completed
@@ -40,3 +38,18 @@ fi
 
 test -d "$HOME/.private" && source "$HOME/.private/profile/"* || true
 
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/rhoffmann/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/rhoffmann/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<
