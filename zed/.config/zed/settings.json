@@ -10,13 +10,13 @@
   "theme": "Catppuccin Mocha",
   "base_keymap": "VSCode",
   "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "buffer_font_size": 14.0,
   "assistant": {
     "enabled": false,
     "version": "2"
   },
   "auto_update": true,
-  "buffer_font_family": "Cascadia Mono PL",
+  "buffer_font_family": "Cascadia Code PL",
   "chat_panel": {
     "button": false
   },
