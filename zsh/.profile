@@ -20,8 +20,12 @@ alias starsearch="starsearch-cli"
 alias ss="starsearch-cli"
 alias codei="code-insiders"
 alias cat="bat"
-alias track="tracker add"
 alias lg="lazygit"
+
+alias t="tracker"
+alias track="tracker add"
+alias start="tracker add start"
+alias pause="tracker add pause"
 
 silent_background() {
     { 2>&3 "$@"& } 3>&2 2>/dev/null
