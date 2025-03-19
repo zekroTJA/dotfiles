@@ -1,8 +1,8 @@
 [
   {
-    "context": "workspace",
     "bindings": {
-      "ctrl-shift-y": "terminal_panel::ToggleFocus"
+      "ctrl-shift-y": "terminal_panel::ToggleFocus",
+      "shift shift": "file_finder::Toggle"
     }
   }
 ]
