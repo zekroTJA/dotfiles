@@ -21,6 +21,7 @@ alias ss="starsearch-cli"
 alias codei="code-insiders"
 alias cat="bat"
 alias lg="lazygit"
+alias kc="kubectl"
 
 alias t="tracker"
 alias track="tracker add"
@@ -42,6 +43,9 @@ fi
 
 test -d "$HOME/.private" && source "$HOME/.private/profile/"* || true
 
+##### function aliases
+
+mkcd() { mkdir -p "$1" && cd "$1"; }
 
 # >>> juliaup initialize >>>
 
