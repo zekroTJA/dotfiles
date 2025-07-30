@@ -11,9 +11,8 @@
   "base_keymap": "VSCode",
   "ui_font_size": 16,
   "buffer_font_size": 15.0,
-  "assistant": {
-    "enabled": false,
-    "version": "2"
+  "agent": {
+    "enabled": false
   },
   "auto_update": true,
   "buffer_font_family": "Cascadia Code PL",
@@ -21,7 +20,7 @@
     "calt": true
   },
   "chat_panel": {
-    "button": false
+    "button": "never"
   },
   "extend_comment_on_newline": true,
   "inlay_hints": {
