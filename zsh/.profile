@@ -41,7 +41,7 @@ if which opam >/dev/null 2>&1; then
     eval $(opam env --switch=default)
 fi
 
-test -d "$HOME/.private" && source "$HOME/.private/profile/"* || true
+test -d "$HOME/.private" && for f in "$HOME/.private/profile/"*; do source "$f"; done || true
 
 ##### function aliases
 
