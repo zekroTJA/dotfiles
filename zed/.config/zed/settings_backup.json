@@ -11,8 +11,9 @@
   "base_keymap": "VSCode",
   "ui_font_size": 16,
   "buffer_font_size": 15.0,
-  "agent": {
-    "enabled": false
+  "assistant": {
+    "enabled": false,
+    "version": "2"
   },
   "auto_update": true,
   "buffer_font_family": "Cascadia Code PL",
@@ -20,7 +21,7 @@
     "calt": true
   },
   "chat_panel": {
-    "button": "never"
+    "button": false
   },
   "extend_comment_on_newline": true,
   "inlay_hints": {
@@ -30,28 +31,6 @@
   "languages": {
     "Markdown": {
       "soft_wrap": "editor_width"
-    },
-    "Python": {
-      "language_servers": ["pyright", "ruff"],
-      "format_on_save": "on",
-      "formatter": [
-        {
-          "language_server": { "name": "ruff" }
-        }
-      ]
-    }
-  },
-  "lsp": {
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          // Ruff server settings goes here
-          "lineLength": 120,
-          "lint": {
-            "extendSelect": ["I"]
-          }
-        }
-      }
     }
   }
 }
