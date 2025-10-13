@@ -5,6 +5,10 @@ export PATH=$PATH:$HOME/dev/snippets/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
+if [[ $DESKTOP_SESSION == "plasma" ]]; then
+    export SSH_ASKPASS_REQUIRE=force
+fi
+
 alias vim="nvim"
 alias v="nvim"
 alias l="lsd"
