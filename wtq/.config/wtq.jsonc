@@ -1,0 +1,22 @@
+{
+	"$schema": "wtq.schema.json",
+	"Apps": [
+		{
+			"Name": "Kitty",
+			"Hotkeys": [
+				{
+					"Modifiers": "Control",
+					"KeyChar": "y"
+				}
+			],
+			"FileName": "kitty",
+			"AlwaysOnTop": false,
+			"HorizontalScreenCoverage": 100,
+			"HorizontalAlign": "Center",
+			"VerticalScreenCoverage": 70,
+			"VerticalOffset": 40,
+			"AnimationDurationMs": 100
+		}
+	],
+	"ShowUiOnStart": true
+}

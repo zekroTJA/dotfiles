@@ -1,0 +1,2248 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "WtqOptions",
+  "type": "object",
+  "description": "Defines WTQ-wide options, including the list of configured apps.",
+  "additionalProperties": false,
+  "required": [
+    "Apps"
+  ],
+  "properties": {
+    "AttachMode": {
+      "title": "Attach mode",
+      "description": "How WTQ should get to an instance of a running app.\nI.e. whether to start an app instance if one cannot be found.",
+      "default": "FindOrStart",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/AttachMode"
+        }
+      ]
+    },
+    "AlwaysOnTop": {
+      "title": "Always on top",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Whether the app should always be on top of other windows, regardless of whether it has focus.",
+      "default": false
+    },
+    "HideOnFocusLost": {
+      "title": "Hide on focus lost",
+      "description": "Whether the app should be toggled off when another app gets focus.",
+      "default": "Always",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/HideOnFocusLost"
+        }
+      ]
+    },
+    "TaskbarIconVisibility": {
+      "title": "Taskbar icon visibility",
+      "description": "When to show the app window icon on the taskbar.",
+      "default": "AlwaysHidden",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/TaskbarIconVisibility"
+        }
+      ]
+    },
+    "Opacity": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Make the window see-through (applies to the entire window, including the title bar).\n0 (invisible) - 100 (opaque).",
+      "format": "int32",
+      "default": 100
+    },
+    "HorizontalScreenCoverage": {
+      "title": "Horizontal screen coverage",
+      "type": [
+        "null",
+        "number"
+      ],
+      "description": "Horizontal screen coverage, as a percentage.",
+      "format": "float",
+      "default": 95.0
+    },
+    "HorizontalAlign": {
+      "title": "Horizontal align",
+      "description": "Where to position an app on the chosen monitor, horizontally.",
+      "default": "Center",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/HorizontalAlign"
+        }
+      ]
+    },
+    "VerticalScreenCoverage": {
+      "title": "Vertical screen coverage",
+      "type": [
+        "null",
+        "number"
+      ],
+      "description": "Vertical screen coverage as a percentage (0-100).",
+      "format": "float",
+      "default": 95.0
+    },
+    "VerticalOffset": {
+      "title": "Vertical offset",
+      "type": [
+        "null",
+        "number"
+      ],
+      "description": "How much room to leave between the top of the app window and the top of the screen, in pixels.",
+      "format": "float",
+      "default": 0.0,
+      "maximum": 1000.0,
+      "minimum": 0.0
+    },
+    "OffScreenLocations": {
+      "title": "Off-screen locations",
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "When moving an app off the screen, WTQ looks for an empty space to move the window to.\nDepending on your monitor setup, this may be above the screen, but switches to below if another monitor exists there.\nBy default, WTQ looks for empty space in this order: Above, Below, Left, Right.",
+      "x-example": {
+        "OffScreenLocations": [
+          "Above",
+          "Below",
+          "Left",
+          "Right"
+        ],
+        "Apps": [
+          {
+            "OffScreenLocations": [
+              "Above",
+              "Below",
+              "Left",
+              "Right"
+            ]
+          }
+        ]
+      },
+      "items": {
+        "$ref": "#/definitions/OffScreenLocation"
+      }
+    },
+    "PreferMonitor": {
+      "title": "Prefer monitor",
+      "description": "Which monitor to preferably drop the app.",
+      "default": "WithCursor",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/PreferMonitor"
+        }
+      ]
+    },
+    "MonitorIndex": {
+      "title": "Monitor index",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "If PreferMonitor is set to AtIndex, this setting determines what monitor to choose.\nZero based, e.g. 0, 1, etc.",
+      "format": "int32",
+      "default": 0,
+      "maximum": 10.0,
+      "minimum": 0.0
+    },
+    "AnimationDurationMs": {
+      "title": "Animation duration",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "How long the animation should take, in milliseconds.",
+      "format": "int32",
+      "default": 250,
+      "maximum": 1000.0,
+      "minimum": 0.0
+    },
+    "AnimationTypeToggleOn": {
+      "title": "Animation type (toggle ON)",
+      "description": "The animation type to use when toggling on an application.",
+      "default": "EaseOutQuart",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/AnimationType"
+        }
+      ]
+    },
+    "AnimationTypeToggleOff": {
+      "title": "Animation type (toggle OFF)",
+      "description": "The animation type to use when toggling off an application.",
+      "default": "EaseInQuart",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/AnimationType"
+        }
+      ]
+    },
+    "EventHooks": {
+      "title": "Event hooks",
+      "type": "array",
+      "description": "Execute a program when some event occurs.",
+      "items": {
+        "$ref": "#/definitions/WtqAppEventHookOptions"
+      }
+    },
+    "$schema": {
+      "type": "string",
+      "description": "Path to wtq.schema.json.\nUsed for adding intellisense-like features to editors that support JSON schema (such as VSCode)."
+    },
+    "Apps": {
+      "type": "array",
+      "description": "Applications to enable Quake-style dropdown for.",
+      "x-example": {
+        "Apps": [
+          {
+            "Name": "App 1"
+          },
+          {
+            "Name": "App 2"
+          }
+          /* ...*/
+        ]
+      },
+      "items": {
+        "$ref": "#/definitions/WtqAppOptions"
+      }
+    },
+    "Hotkeys": {
+      "type": "array",
+      "description": "Global hotkeys, that toggle either the first, or the most recently toggled app.",
+      "x-example": {
+        "Hotkeys": [
+          {
+            "Modifiers": "Control",
+            "Key": "Q"
+          }
+        ]
+      },
+      "items": {
+        "$ref": "#/definitions/HotkeyOptions"
+      }
+    },
+    "AnimationTargetFps": {
+      "title": "Animation target FPS",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "How many frames per second the animation should be.\nNote that this may not be hit if moving windows takes too long, hence \"target\" fps.\nMust be between 5 and 120, to prevent issues that can arise with values that are too low or too high.",
+      "format": "int32",
+      "default": 40,
+      "maximum": 120.0,
+      "minimum": 5.0
+    },
+    "Api": {
+      "description": "Options related to the HTTP API, that can be used to control WTQ programmatically.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/WtqApiOptions"
+        }
+      ]
+    },
+    "FeatureFlags": {
+      "title": "Feature flags",
+      "description": "Sometimes functionality is added or changed that carries more risk of introducing bugs.\nFor these cases, such functionality can be put behind a \"feature flag\", which makes them opt-in or opt-out.\nThat way, we can still merge to master, and make it part of the stable release version (reducing branches and dev builds and what not),\nbut still have a way back should things go awry.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/FeatureFlags"
+        }
+      ]
+    },
+    "ShowUiOnStart": {
+      "title": "Show UI on start",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Whether to show the GUI when WTQ is started.",
+      "default": false
+    },
+    "TrayIconStyle": {
+      "title": "Tray icon (color) style",
+      "description": "The tray icon (color) style (dark/light).",
+      "default": "Auto",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/definitions/TrayIconStyle"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "AttachMode": {
+      "type": "string",
+      "description": "How WTQ should try to attach to an app.",
+      "x-enum-names": [
+        "None",
+        "Find",
+        "FindOrStart",
+        "Manual"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Find",
+        "FindOrStart",
+        "Manual"
+      ],
+      "x-enumNames": [
+        "None",
+        "Find",
+        "FindOrStart",
+        "Manual"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Find",
+        "FindOrStart",
+        "Manual"
+      ]
+    },
+    "HideOnFocusLost": {
+      "type": "string",
+      "description": "Whether to toggle off an app when focus moves to another app.",
+      "x-enum-names": [
+        "None",
+        "Always",
+        "Never",
+        "UnlessFocusChangedScreen",
+        "True",
+        "False"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Always",
+        "Never",
+        "UnlessFocusChangedScreen",
+        "True",
+        "False"
+      ],
+      "x-enumNames": [
+        "None",
+        "Always",
+        "Never",
+        "UnlessFocusChangedScreen",
+        "True",
+        "False"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Always",
+        "Never",
+        "UnlessFocusChangedScreen",
+        "True",
+        "False"
+      ]
+    },
+    "TaskbarIconVisibility": {
+      "type": "string",
+      "description": "Determines the visibility of the app's taskbar icon.",
+      "x-enum-names": [
+        "None",
+        "AlwaysHidden",
+        "AlwaysVisible",
+        "WhenAppVisible"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "AlwaysHidden",
+        "AlwaysVisible",
+        "WhenAppVisible"
+      ],
+      "x-enumNames": [
+        "None",
+        "AlwaysHidden",
+        "AlwaysVisible",
+        "WhenAppVisible"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "AlwaysHidden",
+        "AlwaysVisible",
+        "WhenAppVisible"
+      ]
+    },
+    "HorizontalAlign": {
+      "type": "string",
+      "description": "Determines where to place an app window on the screen, horizontally.",
+      "x-enum-names": [
+        "Center",
+        "Left",
+        "Right"
+      ],
+      "x-enum-varnames": [
+        "Center",
+        "Left",
+        "Right"
+      ],
+      "x-enumNames": [
+        "Center",
+        "Left",
+        "Right"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "Center",
+        "Left",
+        "Right"
+      ]
+    },
+    "OffScreenLocation": {
+      "type": "string",
+      "description": "Where app windows should be moved to- and from, relative to the preferred screen.",
+      "x-enum-names": [
+        "None",
+        "Above",
+        "Below",
+        "Left",
+        "Right"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Above",
+        "Below",
+        "Left",
+        "Right"
+      ],
+      "x-enumNames": [
+        "None",
+        "Above",
+        "Below",
+        "Left",
+        "Right"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Above",
+        "Below",
+        "Left",
+        "Right"
+      ]
+    },
+    "PreferMonitor": {
+      "type": "string",
+      "description": "What monitor an app should be toggle on.",
+      "x-enum-names": [
+        "WithCursor",
+        "AtIndex",
+        "Primary"
+      ],
+      "x-enum-varnames": [
+        "WithCursor",
+        "AtIndex",
+        "Primary"
+      ],
+      "x-enumNames": [
+        "WithCursor",
+        "AtIndex",
+        "Primary"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "WithCursor",
+        "AtIndex",
+        "Primary"
+      ]
+    },
+    "AnimationType": {
+      "type": "string",
+      "description": "See easings.net for more information.",
+      "x-enum-names": [
+        "Linear",
+        "EaseInOutSine",
+        "EaseInBack",
+        "EaseInCubic",
+        "EaseInQuart",
+        "EaseOutBack",
+        "EaseOutCubic",
+        "EaseOutQuart"
+      ],
+      "x-enum-varnames": [
+        "Linear",
+        "EaseInOutSine",
+        "EaseInBack",
+        "EaseInCubic",
+        "EaseInQuart",
+        "EaseOutBack",
+        "EaseOutCubic",
+        "EaseOutQuart"
+      ],
+      "x-enumNames": [
+        "Linear",
+        "EaseInOutSine",
+        "EaseInBack",
+        "EaseInCubic",
+        "EaseInQuart",
+        "EaseOutBack",
+        "EaseOutCubic",
+        "EaseOutQuart"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "Linear",
+        "EaseInOutSine",
+        "EaseInBack",
+        "EaseInCubic",
+        "EaseInQuart",
+        "EaseOutBack",
+        "EaseOutCubic",
+        "EaseOutQuart"
+      ]
+    },
+    "WtqAppEventHookOptions": {
+      "type": "object",
+      "description": "A single action to undertake when a specified event is fired.",
+      "additionalProperties": false,
+      "required": [
+        "EventPattern",
+        "FileName"
+      ],
+      "properties": {
+        "EventPattern": {
+          "title": "Event pattern",
+          "type": "string",
+          "description": "A pattern that determines what event or events to hit.\nSupports regular expressions.",
+          "minLength": 1
+        },
+        "FileName": {
+          "title": "Filename",
+          "type": "string",
+          "description": "The filename used when starting a process, when the event occurs.",
+          "minLength": 1
+        },
+        "ArgumentList": {
+          "title": "Argument list",
+          "type": "array",
+          "description": "Command-line arguments that should be passed to the process when it's started.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "WtqAppOptions": {
+      "type": "object",
+      "description": "Defines the options for a single toggleable app (eg. Windows Terminal, some other terminal, a file browser, etc.).",
+      "additionalProperties": false,
+      "required": [
+        "Name",
+        "FileName"
+      ],
+      "properties": {
+        "AttachMode": {
+          "title": "Attach mode",
+          "description": "How WTQ should get to an instance of a running app.\nI.e. whether to start an app instance if one cannot be found.",
+          "default": "FindOrStart",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AttachMode"
+            }
+          ]
+        },
+        "AlwaysOnTop": {
+          "title": "Always on top",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Whether the app should always be on top of other windows, regardless of whether it has focus.",
+          "default": false
+        },
+        "HideOnFocusLost": {
+          "title": "Hide on focus lost",
+          "description": "Whether the app should be toggled off when another app gets focus.",
+          "default": "Always",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HideOnFocusLost"
+            }
+          ]
+        },
+        "TaskbarIconVisibility": {
+          "title": "Taskbar icon visibility",
+          "description": "When to show the app window icon on the taskbar.",
+          "default": "AlwaysHidden",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/TaskbarIconVisibility"
+            }
+          ]
+        },
+        "Opacity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Make the window see-through (applies to the entire window, including the title bar).\n0 (invisible) - 100 (opaque).",
+          "format": "int32",
+          "default": 100
+        },
+        "HorizontalScreenCoverage": {
+          "title": "Horizontal screen coverage",
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "Horizontal screen coverage, as a percentage.",
+          "format": "float",
+          "default": 95.0
+        },
+        "HorizontalAlign": {
+          "title": "Horizontal align",
+          "description": "Where to position an app on the chosen monitor, horizontally.",
+          "default": "Center",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/HorizontalAlign"
+            }
+          ]
+        },
+        "VerticalScreenCoverage": {
+          "title": "Vertical screen coverage",
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "Vertical screen coverage as a percentage (0-100).",
+          "format": "float",
+          "default": 95.0
+        },
+        "VerticalOffset": {
+          "title": "Vertical offset",
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "How much room to leave between the top of the app window and the top of the screen, in pixels.",
+          "format": "float",
+          "default": 0.0,
+          "maximum": 1000.0,
+          "minimum": 0.0
+        },
+        "OffScreenLocations": {
+          "title": "Off-screen locations",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "When moving an app off the screen, WTQ looks for an empty space to move the window to.\nDepending on your monitor setup, this may be above the screen, but switches to below if another monitor exists there.\nBy default, WTQ looks for empty space in this order: Above, Below, Left, Right.",
+          "x-example": {
+            "OffScreenLocations": [
+              "Above",
+              "Below",
+              "Left",
+              "Right"
+            ],
+            "Apps": [
+              {
+                "OffScreenLocations": [
+                  "Above",
+                  "Below",
+                  "Left",
+                  "Right"
+                ]
+              }
+            ]
+          },
+          "items": {
+            "$ref": "#/definitions/OffScreenLocation"
+          }
+        },
+        "PreferMonitor": {
+          "title": "Prefer monitor",
+          "description": "Which monitor to preferably drop the app.",
+          "default": "WithCursor",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/PreferMonitor"
+            }
+          ]
+        },
+        "MonitorIndex": {
+          "title": "Monitor index",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "If PreferMonitor is set to AtIndex, this setting determines what monitor to choose.\nZero based, e.g. 0, 1, etc.",
+          "format": "int32",
+          "default": 0,
+          "maximum": 10.0,
+          "minimum": 0.0
+        },
+        "AnimationDurationMs": {
+          "title": "Animation duration",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "How long the animation should take, in milliseconds.",
+          "format": "int32",
+          "default": 250,
+          "maximum": 1000.0,
+          "minimum": 0.0
+        },
+        "AnimationTypeToggleOn": {
+          "title": "Animation type (toggle ON)",
+          "description": "The animation type to use when toggling on an application.",
+          "default": "EaseOutQuart",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AnimationType"
+            }
+          ]
+        },
+        "AnimationTypeToggleOff": {
+          "title": "Animation type (toggle OFF)",
+          "description": "The animation type to use when toggling off an application.",
+          "default": "EaseInQuart",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AnimationType"
+            }
+          ]
+        },
+        "EventHooks": {
+          "title": "Event hooks",
+          "type": "array",
+          "description": "Execute a program when some event occurs.",
+          "items": {
+            "$ref": "#/definitions/WtqAppEventHookOptions"
+          }
+        },
+        "Name": {
+          "type": "string",
+          "description": "A logical name for the app, used to identify it across config reloads.\nAppears in logs.",
+          "minLength": 1,
+          "x-example": {
+            "Name": "Terminal"
+          }
+        },
+        "Hotkeys": {
+          "type": "array",
+          "description": "One or more keyboard shortcuts that toggle in- and out this particular app.",
+          "items": {
+            "$ref": "#/definitions/HotkeyOptions"
+          }
+        },
+        "FileName": {
+          "title": "Filename",
+          "type": "string",
+          "description": "The filename to use when starting a new process for the app.\nE.g. notepad, dolphin, etc.\nNote that you can also put absolute paths in here.",
+          "minLength": 1
+        },
+        "Arguments": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Command-line arguments that should be passed to the app when it's started.\nNote that this only applies when using an AttachMode that starts the app."
+        },
+        "ArgumentList": {
+          "title": "Argument list",
+          "type": "array",
+          "description": "Command-line arguments that should be passed to the app when it's started.\nNote that this only applies when using an AttachMode that starts the app.",
+          "x-example": {
+            "Apps": [
+              {
+                "ArgumentList": [
+                  "--allow-screencapture",
+                  "--debug-info"
+                ]
+              }
+            ]
+          },
+          "items": {
+            "$ref": "#/definitions/ProcessArgument"
+          }
+        },
+        "WorkingDirectory": {
+          "title": "Working directory",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Working directory when starting a new process.\nUseful if the filename isn't available through PATH."
+        },
+        "ProcessName": {
+          "title": "Process name",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Apps sometimes have process names different from their filenames.\nThis field can be used to look for the process name in such cases. Windows Terminal is an\nexample, with filename wt, and process name WindowsTerminal.\nSupports regular expressions.",
+          "x-example": {
+            "Apps": {
+              "Filename": "wt",
+              "ProcessName": "^WindowsTerminal$"
+            }
+          }
+        },
+        "MainWindow": {
+          "title": "Main window",
+          "description": "(Windows only) Matches only \"main\" windows; the initial window a process spawns.\nWhen a process spawns multiple windows, 1 is usually the \"main\" window. In many cases, this is also the window\nthat you'd want to use WTQ with. Non-main-windows are usually child windows like popups and such.\nWhen the other (non-main) windows cannot be easily differentiated from the main window (for example through\nthe window class or -title), the \"is-main-window\"-property can be very useful to home in on the desired window.\nA common example of an app where this would not help, is a browser, that can spawn tons of windows on the same process name.",
+          "default": "Either",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/MainWindowState"
+            }
+          ]
+        },
+        "WindowClass": {
+          "title": "Window class",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "(Windows only) Matches windows based on their Win32 Window Class.\nSupports regular expressions."
+        },
+        "WindowTitle": {
+          "title": "Window title",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Match windows based on their title (sometimes referred to as \"caption\").\nSupports regular expressions."
+        },
+        "WindowTitleOverride": {
+          "title": "Window title override",
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Attempt to set the window title to a specific value.\nUseful for cases where multiple programs control window placement (such as when\nusing WTQ together with a window manager) and the window title can be used to\nopt-out in the other program."
+        }
+      }
+    },
+    "HotkeyOptions": {
+      "type": "object",
+      "description": "Defines a combination of a KeyCode value, with optional KeyModifiers, used for mapping a shortcut to an action.",
+      "additionalProperties": false,
+      "properties": {
+        "Modifiers": {
+          "description": "The modifiers that need to be active.",
+          "default": "None",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyModifiers"
+            }
+          ]
+        },
+        "Key": {
+          "description": "The key to use, as a virtual key code. This is a keyboard-layout-independent code that points to the physical location on the keyboard.",
+          "default": "None",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/KeyCode"
+            }
+          ]
+        },
+        "KeyChar": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The key to use, as a character. This is keyboard-layout-dependent, and points to what a key produces, as opposed to where it is on the keyboard."
+        }
+      }
+    },
+    "KeyModifiers": {
+      "type": "string",
+      "description": "Alt, control, etc.\nNamed plurally, as it can contain multiple values.\nSeparate multiple values with commas, e.g. \"Control, Alt\".",
+      "x-enumFlags": true,
+      "x-enum-names": [
+        "None",
+        "Alt",
+        "Control",
+        "Shift",
+        "Super",
+        "Numpad"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Alt",
+        "Control",
+        "Shift",
+        "Super",
+        "Numpad"
+      ],
+      "x-enumNames": [
+        "None",
+        "Alt",
+        "Control",
+        "Shift",
+        "Super",
+        "Numpad"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Alt",
+        "Control",
+        "Shift",
+        "Super",
+        "Numpad"
+      ]
+    },
+    "KeyCode": {
+      "type": "string",
+      "description": "Represents a virtual key code, i.e. a key that points to a physical button on a keyboard, without necessarily taking into account keyboard language/layout.",
+      "x-enum-names": [
+        "None",
+        "Cancel",
+        "Backspace",
+        "Tab",
+        "LineFeed",
+        "Clear",
+        "Return",
+        "Pause",
+        "CapsLock",
+        "HangulMode",
+        "HanguelMode",
+        "KanaMode",
+        "JunjaMode",
+        "FinalMode",
+        "HanjaMode",
+        "KanjiMode",
+        "Escape",
+        "IMEConvert",
+        "IMENonConvert",
+        "IMEAccept",
+        "IMEModeChange",
+        "Space",
+        "PageUp",
+        "PageDown",
+        "End",
+        "Home",
+        "ArrowLeft",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowDown",
+        "Select",
+        "Print",
+        "Execute",
+        "PrintScreen",
+        "Insert",
+        "Delete",
+        "Help",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "SuperLeft",
+        "SuperRight",
+        "ContextMenu",
+        "Sleep",
+        "Numpad0",
+        "Numpad1",
+        "Numpad2",
+        "Numpad3",
+        "Numpad4",
+        "Numpad5",
+        "Numpad6",
+        "Numpad7",
+        "Numpad8",
+        "Numpad9",
+        "NumpadMultiply",
+        "NumpadAdd",
+        "NumpadSeparator",
+        "NumpadSubtract",
+        "NumpadDecimal",
+        "NumpadDivide",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22",
+        "F23",
+        "F24",
+        "NumLock",
+        "ScrollLock",
+        "ShiftLeft",
+        "ShiftRight",
+        "ControlLeft",
+        "ControlRight",
+        "AltLeft",
+        "AltRight",
+        "BrowserBack",
+        "BrowserForward",
+        "BrowserRefresh",
+        "BrowserStop",
+        "BrowserSearch",
+        "BrowserFavorites",
+        "BrowserHome",
+        "VolumeMute",
+        "VolumeDown",
+        "VolumeUp",
+        "MediaNextTrack",
+        "MediaPreviousTrack",
+        "MediaStop",
+        "MediaPlayPause",
+        "LaunchMail",
+        "LaunchSelectMedia",
+        "LaunchApplication1",
+        "LaunchApplication2",
+        "Oem1",
+        "OemSemicolon",
+        "OemPlus",
+        "OemComma",
+        "OemMinus",
+        "OemPeriod",
+        "Oem2",
+        "OemQuestion",
+        "Oem3",
+        "OemTilde",
+        "Oem4",
+        "OemOpenBrackets",
+        "Oem5",
+        "OemPipe",
+        "Oem6",
+        "OemCloseBrackets",
+        "Oem7",
+        "OemQuotes",
+        "Oem8",
+        "OemBackslash",
+        "Oem102",
+        "Process",
+        "Packet",
+        "Attn",
+        "Crsel",
+        "Exsel",
+        "EraseEof",
+        "Play",
+        "Zoom",
+        "NoName",
+        "Pa1",
+        "OemClear"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Cancel",
+        "Backspace",
+        "Tab",
+        "LineFeed",
+        "Clear",
+        "Return",
+        "Pause",
+        "CapsLock",
+        "HangulMode",
+        "HanguelMode",
+        "KanaMode",
+        "JunjaMode",
+        "FinalMode",
+        "HanjaMode",
+        "KanjiMode",
+        "Escape",
+        "IMEConvert",
+        "IMENonConvert",
+        "IMEAccept",
+        "IMEModeChange",
+        "Space",
+        "PageUp",
+        "PageDown",
+        "End",
+        "Home",
+        "ArrowLeft",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowDown",
+        "Select",
+        "Print",
+        "Execute",
+        "PrintScreen",
+        "Insert",
+        "Delete",
+        "Help",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "SuperLeft",
+        "SuperRight",
+        "ContextMenu",
+        "Sleep",
+        "Numpad0",
+        "Numpad1",
+        "Numpad2",
+        "Numpad3",
+        "Numpad4",
+        "Numpad5",
+        "Numpad6",
+        "Numpad7",
+        "Numpad8",
+        "Numpad9",
+        "NumpadMultiply",
+        "NumpadAdd",
+        "NumpadSeparator",
+        "NumpadSubtract",
+        "NumpadDecimal",
+        "NumpadDivide",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22",
+        "F23",
+        "F24",
+        "NumLock",
+        "ScrollLock",
+        "ShiftLeft",
+        "ShiftRight",
+        "ControlLeft",
+        "ControlRight",
+        "AltLeft",
+        "AltRight",
+        "BrowserBack",
+        "BrowserForward",
+        "BrowserRefresh",
+        "BrowserStop",
+        "BrowserSearch",
+        "BrowserFavorites",
+        "BrowserHome",
+        "VolumeMute",
+        "VolumeDown",
+        "VolumeUp",
+        "MediaNextTrack",
+        "MediaPreviousTrack",
+        "MediaStop",
+        "MediaPlayPause",
+        "LaunchMail",
+        "LaunchSelectMedia",
+        "LaunchApplication1",
+        "LaunchApplication2",
+        "Oem1",
+        "OemSemicolon",
+        "OemPlus",
+        "OemComma",
+        "OemMinus",
+        "OemPeriod",
+        "Oem2",
+        "OemQuestion",
+        "Oem3",
+        "OemTilde",
+        "Oem4",
+        "OemOpenBrackets",
+        "Oem5",
+        "OemPipe",
+        "Oem6",
+        "OemCloseBrackets",
+        "Oem7",
+        "OemQuotes",
+        "Oem8",
+        "OemBackslash",
+        "Oem102",
+        "Process",
+        "Packet",
+        "Attn",
+        "Crsel",
+        "Exsel",
+        "EraseEof",
+        "Play",
+        "Zoom",
+        "NoName",
+        "Pa1",
+        "OemClear"
+      ],
+      "x-enumNames": [
+        "None",
+        "Cancel",
+        "Backspace",
+        "Tab",
+        "LineFeed",
+        "Clear",
+        "Return",
+        "Pause",
+        "CapsLock",
+        "HangulMode",
+        "HanguelMode",
+        "KanaMode",
+        "JunjaMode",
+        "FinalMode",
+        "HanjaMode",
+        "KanjiMode",
+        "Escape",
+        "IMEConvert",
+        "IMENonConvert",
+        "IMEAccept",
+        "IMEModeChange",
+        "Space",
+        "PageUp",
+        "PageDown",
+        "End",
+        "Home",
+        "ArrowLeft",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowDown",
+        "Select",
+        "Print",
+        "Execute",
+        "PrintScreen",
+        "Insert",
+        "Delete",
+        "Help",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "SuperLeft",
+        "SuperRight",
+        "ContextMenu",
+        "Sleep",
+        "Numpad0",
+        "Numpad1",
+        "Numpad2",
+        "Numpad3",
+        "Numpad4",
+        "Numpad5",
+        "Numpad6",
+        "Numpad7",
+        "Numpad8",
+        "Numpad9",
+        "NumpadMultiply",
+        "NumpadAdd",
+        "NumpadSeparator",
+        "NumpadSubtract",
+        "NumpadDecimal",
+        "NumpadDivide",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22",
+        "F23",
+        "F24",
+        "NumLock",
+        "ScrollLock",
+        "ShiftLeft",
+        "ShiftRight",
+        "ControlLeft",
+        "ControlRight",
+        "AltLeft",
+        "AltRight",
+        "BrowserBack",
+        "BrowserForward",
+        "BrowserRefresh",
+        "BrowserStop",
+        "BrowserSearch",
+        "BrowserFavorites",
+        "BrowserHome",
+        "VolumeMute",
+        "VolumeDown",
+        "VolumeUp",
+        "MediaNextTrack",
+        "MediaPreviousTrack",
+        "MediaStop",
+        "MediaPlayPause",
+        "LaunchMail",
+        "LaunchSelectMedia",
+        "LaunchApplication1",
+        "LaunchApplication2",
+        "Oem1",
+        "OemSemicolon",
+        "OemPlus",
+        "OemComma",
+        "OemMinus",
+        "OemPeriod",
+        "Oem2",
+        "OemQuestion",
+        "Oem3",
+        "OemTilde",
+        "Oem4",
+        "OemOpenBrackets",
+        "Oem5",
+        "OemPipe",
+        "Oem6",
+        "OemCloseBrackets",
+        "Oem7",
+        "OemQuotes",
+        "Oem8",
+        "OemBackslash",
+        "Oem102",
+        "Process",
+        "Packet",
+        "Attn",
+        "Crsel",
+        "Exsel",
+        "EraseEof",
+        "Play",
+        "Zoom",
+        "NoName",
+        "Pa1",
+        "OemClear"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Cancel",
+        "Backspace",
+        "Tab",
+        "LineFeed",
+        "Clear",
+        "Return",
+        "Pause",
+        "CapsLock",
+        "HangulMode",
+        "HangulMode",
+        "HangulMode",
+        "JunjaMode",
+        "FinalMode",
+        "HanjaMode",
+        "HanjaMode",
+        "Escape",
+        "IMEConvert",
+        "IMENonConvert",
+        "IMEAccept",
+        "IMEModeChange",
+        "Space",
+        "PageUp",
+        "PageDown",
+        "End",
+        "Home",
+        "ArrowLeft",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowDown",
+        "Select",
+        "Print",
+        "Execute",
+        "PrintScreen",
+        "Insert",
+        "Delete",
+        "Help",
+        "D0",
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "SuperLeft",
+        "SuperRight",
+        "ContextMenu",
+        "Sleep",
+        "Numpad0",
+        "Numpad1",
+        "Numpad2",
+        "Numpad3",
+        "Numpad4",
+        "Numpad5",
+        "Numpad6",
+        "Numpad7",
+        "Numpad8",
+        "Numpad9",
+        "NumpadMultiply",
+        "NumpadAdd",
+        "NumpadSeparator",
+        "NumpadSubtract",
+        "NumpadDecimal",
+        "NumpadDivide",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22",
+        "F23",
+        "F24",
+        "NumLock",
+        "ScrollLock",
+        "ShiftLeft",
+        "ShiftRight",
+        "ControlLeft",
+        "ControlRight",
+        "AltLeft",
+        "AltRight",
+        "BrowserBack",
+        "BrowserForward",
+        "BrowserRefresh",
+        "BrowserStop",
+        "BrowserSearch",
+        "BrowserFavorites",
+        "BrowserHome",
+        "VolumeMute",
+        "VolumeDown",
+        "VolumeUp",
+        "MediaNextTrack",
+        "MediaPreviousTrack",
+        "MediaStop",
+        "MediaPlayPause",
+        "LaunchMail",
+        "LaunchSelectMedia",
+        "LaunchApplication1",
+        "LaunchApplication2",
+        "Oem1",
+        "Oem1",
+        "OemPlus",
+        "OemComma",
+        "OemMinus",
+        "OemPeriod",
+        "Oem2",
+        "Oem2",
+        "Oem3",
+        "Oem3",
+        "Oem4",
+        "Oem4",
+        "Oem5",
+        "Oem5",
+        "Oem6",
+        "Oem6",
+        "Oem7",
+        "Oem7",
+        "Oem8",
+        "OemBackslash",
+        "OemBackslash",
+        "Process",
+        "Packet",
+        "Attn",
+        "Crsel",
+        "Exsel",
+        "EraseEof",
+        "Play",
+        "Zoom",
+        "NoName",
+        "Pa1",
+        "OemClear"
+      ]
+    },
+    "ProcessArgument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Argument": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "MainWindowState": {
+      "type": "string",
+      "description": "How being the \"main-window\" affects attaching.\nI.e. should WTQ attach to main windows only, non-main windows only, or either.",
+      "x-enum-names": [
+        "None",
+        "MainWindowOnly",
+        "NonMainWindowOnly",
+        "Either"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "MainWindowOnly",
+        "NonMainWindowOnly",
+        "Either"
+      ],
+      "x-enumNames": [
+        "None",
+        "MainWindowOnly",
+        "NonMainWindowOnly",
+        "Either"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "MainWindowOnly",
+        "NonMainWindowOnly",
+        "Either"
+      ]
+    },
+    "WtqApiOptions": {
+      "type": "object",
+      "description": "Options related to the HTTP API, that can be used to control WTQ programmatically.",
+      "additionalProperties": false,
+      "properties": {
+        "Enable": {
+          "type": "boolean",
+          "description": "Whether the HTTP API is enabled at all."
+        },
+        "Urls": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The addresses on which the HTTP API will listen.\nOn Windows, this defaults to a named pipe, with name \"wtq\".\nOn Linux, this defaults to a Unix socket, at /tmp/wtq.sock.\n\nA regular socket can also be used, e.g. \"http://127.0.0.1:8998\".",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "FeatureFlags": {
+      "type": "object",
+      "description": "Sometimes functionality is added or changed that carries more risk of introducing bugs.\n\nFor these cases, such functionality can be put behind a \"feature flag\", which makes them opt-in or opt-out.\nThat way, we can still merge to master, and make it part of the stable release version (reducing branches and dev builds and what not),\nbut still have a way back should things go awry.",
+      "additionalProperties": false,
+      "properties": {
+        "NewWindowCapture": {
+          "type": "boolean",
+          "description": "(Windows only) Switches to finding- and capturing windows starting from the _window_, instead of from the _process_.\nEnables attaching to windows other than an application's main window (useful for browsers, for example), and other\ncases where a single process spawns a bunch of windows (like the Windows file explorer, which is part of the \"explorer\" process).\n\nPretty radically different from the previous implementation, so we're feature-flagging it for a while."
+        },
+        "SharpHook": {
+          "type": "boolean",
+          "description": "(Windows only) Switches the hotkey subsystem to using SharpHook, instead of registering through an invisible WinForm's window message loop.\nEnables more keys (such as the \"Windows\", or \"Meta\", or \"Super\" modifier).\n\nWhile implementing this, some subtle issues were encountered. Although all the known ones have been fixed, it's enough of a change that we're feature-flagging it for a while."
+        }
+      }
+    },
+    "TrayIconStyle": {
+      "type": "string",
+      "description": "Style of the tray icon (i.e. light or dark).",
+      "x-enum-names": [
+        "None",
+        "Auto",
+        "Dark",
+        "Light"
+      ],
+      "x-enum-varnames": [
+        "None",
+        "Auto",
+        "Dark",
+        "Light"
+      ],
+      "x-enumNames": [
+        "None",
+        "Auto",
+        "Dark",
+        "Light"
+      ],
+      "x-enum-descriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "x-enumDescriptions": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "enum": [
+        "None",
+        "Auto",
+        "Dark",
+        "Light"
+      ]
+    }
+  }
+}
