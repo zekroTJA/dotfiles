@@ -11,12 +11,13 @@
 			],
 			"FileName": "kitty",
 			"AlwaysOnTop": false,
+			"HideOnFocusLost": "Never",
 			"HorizontalScreenCoverage": 100,
 			"HorizontalAlign": "Center",
 			"VerticalScreenCoverage": 70,
-			"VerticalOffset": 40,
+			"VerticalOffset": 34,
 			"AnimationDurationMs": 100
 		}
 	],
-	"ShowUiOnStart": true
+	"ShowUiOnStart": false
 }
