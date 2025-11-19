@@ -3,7 +3,7 @@
 ## Setup
 
 I am using these dotfiles across multiple devices and systems.
-- For work I am using a Thinkpad T14s with Fedora Workstation and Gnome WM.
+- For work I am using a Thinkpad T14s with Fedora Workstation and KDE Plasma as DE.
 - Privately I am using a 2020 MacBook Air M1.
 - Also, I am using these dotfiles on Windows using WSL2.
 - Maybe these dotfiles might also be spread across some servers and VMs out there. :^)
