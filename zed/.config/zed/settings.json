@@ -42,6 +42,14 @@
     }
   },
   "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": {
+          "enable": true,
+          "command": "clippy"
+        }
+      }
+    },
     "ruff": {
       "initialization_options": {
         "settings": {
