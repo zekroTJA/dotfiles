@@ -5,10 +5,6 @@ export PATH=$PATH:$HOME/dev/snippets/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
-if [[ $DESKTOP_SESSION == "plasma" ]]; then
-    export SSH_ASKPASS_REQUIRE=force
-fi
-
 alias vim="nvim"
 alias v="nvim"
 alias l="lsd"
@@ -43,6 +39,13 @@ fi
 
 if which opam >/dev/null 2>&1; then
     eval $(opam env --switch=default)
+fi
+
+eval "$(ssh-agent -s)" >/dev/null
+
+if [[ $DESKTOP_SESSION == "plasma" ]]; then
+    export SSH_ASKPASS='/usr/bin/ksshaskpass'
+    ssh-add </dev/null >/dev/null 2>&1
 fi
 
 test -d "$HOME/.private" && for f in "$HOME/.private/profile/"*; do source "$f"; done || true
