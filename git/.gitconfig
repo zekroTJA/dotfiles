@@ -28,6 +28,9 @@
 	ff = yes
 	rebase = yes
 
+[rebase]
+	autoStash = true
+
 [push]
 	useForceIfIncludes = true
 
