@@ -1,5 +1,4 @@
 export EDITOR="/usr/bin/nvim"
-# export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:$HOME/dev/snippets/bin
 export PATH=$PATH:$HOME/go/bin
@@ -28,12 +27,16 @@ alias track="tracker add"
 alias start="tracker add start"
 alias pause="tracker add pause"
 
+if command -v podman >/dev/null 2>&1; then
+    alias docker="podman"
+fi
+
 silent_background() {
     { 2>&3 "$@"& } 3>&2 2>/dev/null
     disown &>/dev/null  # Prevent whine if job has already completed
 }
 
-if [ -f "$HOME/dev/snippets/scripts/mousesetup" ]; then
+if [[ -f $HOME/dev/snippets/scripts/mousesetup ]]; then
     silent_background "$HOME/dev/snippets/scripts/mousesetup"
 fi
 
