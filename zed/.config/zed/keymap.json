@@ -4,5 +4,10 @@
       "ctrl-shift-y": "terminal_panel::ToggleFocus",
       "shift shift": "file_finder::Toggle"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-\\": "pane::SplitHorizontal"
+    }
   }
 ]

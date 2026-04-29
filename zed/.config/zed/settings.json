@@ -7,48 +7,76 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "edit_predictions": {
+    "mode": "eager"
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent_servers": {
+    "junie": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "disable_ai": false,
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
   "theme": "Catppuccin Mocha",
   "base_keymap": "VSCode",
   "ui_font_size": 16,
   "buffer_font_size": 15.0,
   "agent": {
-    "enabled": false
+    "dock": "right",
+    "enable_feedback": false,
+    "enabled": true,
   },
   "auto_update": true,
   "buffer_font_family": "Cascadia Code PL",
   "buffer_font_features": {
-    "calt": true
-  },
-  "chat_panel": {
-    "button": "never"
+    "calt": true,
   },
   "extend_comment_on_newline": true,
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
   },
   "format_on_save": "on",
   "languages": {
     "Markdown": {
-      "soft_wrap": "editor_width"
+      "soft_wrap": "editor_width",
     },
     "Python": {
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "on",
       "formatter": [
         {
-          "language_server": { "name": "ruff" }
-        }
-      ]
-    }
+          "language_server": { "name": "ruff" },
+        },
+      ],
+    },
   },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
         "checkOnSave": {
           "enable": true,
-          "command": "clippy"
-        }
-      }
+          "command": "clippy",
+        },
+      },
     },
     "ruff": {
       "initialization_options": {
@@ -56,10 +84,10 @@
           // Ruff server settings goes here
           "lineLength": 120,
           "lint": {
-            "extendSelect": ["I"]
-          }
-        }
-      }
-    }
-  }
+            "extendSelect": ["I"],
+          },
+        },
+      },
+    },
+  },
 }
